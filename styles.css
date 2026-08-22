@@ -1,35 +1,44 @@
-/* Remove browser defaults */
 html,
 body {
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 
-/* Center the image in the available window */
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background: #fff;
 }
 
-/* Desktop / larger screens */
 .hero {
   display: block;
+
+  /* Fit the entire image inside the viewport */
   width: auto;
-  height: 100vh;
+  height: auto;
+
   max-width: 100vw;
+  max-height: 100vh;
+  max-height: 100dvh;
+
   object-fit: contain;
 }
 
 /* Mobile */
 @media (max-width: 600px) {
+  body {
+    min-height: 100dvh;
+  }
+
   .hero {
-    width: 100vw;
+    max-width: 100vw;
+    max-height: 100dvh;
+    width: auto;
     height: auto;
-    max-height: 100vh;
-    object-fit: contain;
   }
 }
