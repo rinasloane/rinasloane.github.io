@@ -1,0 +1,21 @@
+/* Minimal reset */
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #000;
+}
+
+/* Full-bleed image that always fills the viewport while preserving aspect ratio */
+.hero {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;      /* fill viewport and crop as needed */
+  object-position: center center; /* change to 'top' if you want the top preserved */
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+/* Prevent the page from scrolling if the image is slightly larger */
+body { overflow: hidden; }
