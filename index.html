@@ -3,18 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- ======================================== -->
-  <!--       ADD THE 'RS' TAB ICON HERE       -->
-  <!-- ======================================== -->
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-
-  <!-- THE NAME ON THE TAB -->
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=3">
   <title>Rina Sloane | Author</title>
-
-  <!-- (Rest of your code, Font Awesome and <style> block, remains below) -->
   
-  <!-- Font Awesome Icons -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -43,7 +34,6 @@
       min-height: 100dvh;
     }
 
-    /* Centered Book Cover */
     .hero {
       display: block;
       max-width: 100vw;
@@ -55,7 +45,6 @@
       margin: auto;
     }
 
-    /* Fixed Upper-Right Social Links */
     .social-links {
       position: fixed !important;
       top: 24px !important;
@@ -63,7 +52,6 @@
       bottom: auto !important;
       left: auto !important;
       width: auto !important;
-      
       display: flex !important;
       flex-direction: row !important;
       align-items: center !important;
@@ -87,33 +75,33 @@
       transform: translateY(-2px);
     }
 
-    /* Floating 'Coming Soon' Badge */
     .coming-soon {
-      position: fixed;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 99999;
+      position: fixed !important;
+      top: 28px !important;
+      left: 28px !important;
+      bottom: auto !important;
+      right: auto !important;
+      transform: none !important;
+      z-index: 99999 !important;
 
-      background: rgba(0, 0, 0, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
 
       color: #ffffff;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      letter-spacing: 3px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
 
-      padding: 10px 24px;
+      padding: 8px 18px;
       border-radius: 999px;
       pointer-events: none;
       white-space: nowrap;
     }
 
-    /* Mobile screens */
     @media (max-width: 600px) {
       .social-links {
         top: 16px !important;
@@ -124,26 +112,27 @@
         font-size: 20px;
       }
       .coming-soon {
-        bottom: 20px;
-        font-size: 11px;
-        letter-spacing: 2.5px;
-        padding: 8px 18px;
+        top: 16px !important;
+        left: 16px !important;
+        font-size: 10px;
+        letter-spacing: 2px;
+        padding: 6px 14px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Cover Art -->
+  <div class="coming-soon">Coming Soon</div>
+
   <img
     src="assets/cover.jpg"
-    alt="Cover image"
+    alt="Every Lie That Held Me by Rina Sloane"
     class="hero"
     width="1600"
     height="2560"
   />
 
-  <!-- Upper Right Social Icons -->
   <div class="social-links">
     <a
       href="https://www.instagram.com/rinasloane"
@@ -172,9 +161,6 @@
       <i class="fa-brands fa-threads"></i>
     </a>
   </div>
-
-  <!-- Bottom Floating Badge -->
-  <div class="coming-soon">Coming Soon</div>
 
 </body>
 </html>
