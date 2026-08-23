@@ -66,7 +66,7 @@
 
     .coming-soon {
       background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 200, 100, 0.25);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       color: #ffffff;
@@ -94,15 +94,16 @@
       text-decoration: none;
       font-size: 22px;
       opacity: 0.85;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
     }
 
     .social-links a:hover {
+      color: #ffc266;
       opacity: 1;
       transform: translateY(-2px);
     }
 
-    /* Main Area & Ambient Backlight */
+    /* Main Area & Amber Ambient Backlight */
     .main-content {
       flex: 1;
       display: flex;
@@ -114,27 +115,28 @@
       position: relative;
     }
 
+    /* Large Amber Glow Aura */
     .main-content::before {
       content: "";
       position: absolute;
-      width: min(70vw, 420px);
-      height: min(70vh, 550px);
+      width: 90vw;
+      max-width: 750px;
+      height: 85vh;
       background: radial-gradient(
-        circle, 
-        rgba(255, 255, 255, 0.18) 0%, 
-        rgba(160, 160, 255, 0.1) 40%, 
-        rgba(0, 0, 0, 0) 75%
+        ellipse at center,
+        rgba(255, 185, 75, 0.38) 0%,
+        rgba(255, 120, 20, 0.22) 40%,
+        rgba(0, 0, 0, 0) 72%
       );
-      filter: blur(50px);
-      -webkit-filter: blur(50px);
-      border-radius: 50%;
+      filter: blur(60px);
+      -webkit-filter: blur(60px);
       z-index: 1;
       pointer-events: none;
       opacity: 0;
-      animation: glowPulse 6s ease-in-out infinite alternate, fadeIn 1.2s ease-out 0.4s forwards;
+      animation: glowPulse 5s ease-in-out infinite alternate, fadeIn 1.2s ease-out 0.4s forwards;
     }
 
-    /* Centered Book Cover */
+    /* Centered Book Cover with Amber Edge Illumination */
     .hero {
       display: block;
       position: relative;
@@ -145,8 +147,13 @@
       max-width: 90vw;
       object-fit: contain;
       border-radius: 4px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 
-                  0 0 1px rgba(255, 255, 255, 0.2);
+      
+      /* Multi-layer amber ambient glow */
+      box-shadow: 
+        0 0 35px rgba(255, 205, 110, 0.35),
+        0 0 80px rgba(255, 140, 30, 0.45),
+        0 20px 50px rgba(0, 0, 0, 0.95);
+
       opacity: 0;
       animation: fadeInScale 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -170,12 +177,12 @@
 
     @keyframes glowPulse {
       0% {
-        transform: scale(0.92);
-        opacity: 0.6;
+        transform: scale(0.94);
+        opacity: 0.75;
       }
       100% {
-        transform: scale(1.08);
-        opacity: 0.9;
+        transform: scale(1.06);
+        opacity: 1;
       }
     }
 
@@ -200,10 +207,10 @@
       }
 
       .main-content::before {
-        width: 70vw;
-        height: 50vh;
-        filter: blur(35px);
-        -webkit-filter: blur(35px);
+        width: 100vw;
+        height: 60vh;
+        filter: blur(40px);
+        -webkit-filter: blur(40px);
       }
 
       .hero {
@@ -211,6 +218,10 @@
         height: auto;
         max-width: 86vw;
         max-height: calc(100dvh - 130px);
+        box-shadow: 
+          0 0 25px rgba(255, 205, 110, 0.4),
+          0 0 60px rgba(255, 140, 30, 0.5),
+          0 15px 35px rgba(0, 0, 0, 0.9);
       }
     }
 
