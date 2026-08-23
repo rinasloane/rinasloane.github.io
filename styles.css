@@ -2,6 +2,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -18,11 +19,35 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
-  /* Safe padding for desktop */
   padding: 80px 24px 24px;
 }
 
-/* Centered Book Cover */
+/* ========================================== */
+/* FADE-IN KEYFRAMES                          */
+/* ========================================== */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInSimple {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ========================================== */
+/* CENTERED BOOK COVER                        */
+/* ========================================== */
 .hero {
   display: block;
   max-width: min(85vw, 500px) !important;
@@ -31,9 +56,15 @@ body {
   height: auto !important;
   object-fit: contain;
   margin: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+
+  /* Animation */
+  animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Fixed Upper-Right Social Links */
+/* ========================================== */
+/* SOCIAL LINKS                               */
+/* ========================================== */
 .social-links {
   position: fixed;
   top: max(24px, env(safe-area-inset-top));
@@ -43,6 +74,10 @@ body {
   align-items: center;
   gap: 22px;
   z-index: 99999;
+
+  /* Staggered animation */
+  opacity: 0;
+  animation: fadeInSimple 0.8s ease-out 0.3s forwards;
 }
 
 .social-links a {
@@ -61,7 +96,9 @@ body {
   transform: translateY(-2px);
 }
 
-/* Fixed Upper-Left 'Coming Soon' Badge */
+/* ========================================== */
+/* COMING SOON BADGE                          */
+/* ========================================== */
 .coming-soon {
   position: fixed;
   top: max(28px, env(safe-area-inset-top));
@@ -84,12 +121,17 @@ body {
   border-radius: 999px;
   pointer-events: none;
   white-space: nowrap;
+
+  /* Staggered animation */
+  opacity: 0;
+  animation: fadeInSimple 0.8s ease-out 0.3s forwards;
 }
 
-/* Mobile Adjustments */
+/* ========================================== */
+/* MOBILE OVERRIDES                           */
+/* ========================================== */
 @media (max-width: 600px) {
   body {
-    /* Ensures top clearance so the cover doesn't sit under the header elements */
     padding: calc(env(safe-area-inset-top) + 60px) 16px 24px;
   }
 
@@ -112,7 +154,7 @@ body {
   }
 
   .hero {
-    max-width: 82vw;
-    max-height: calc(100dvh - 140px);
+    max-width: 82vw !important;
+    max-height: calc(100dvh - 140px) !important;
   }
 }
