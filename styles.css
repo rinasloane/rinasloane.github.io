@@ -25,14 +25,12 @@ body {
 /* Centered Book Cover */
 .hero {
   display: block;
-  /* Leaves room for margins and overlays */
-  max-width: min(90vw, 550px);
-  max-height: calc(100dvh - 120px);
-  width: auto;
-  height: auto;
+  max-width: min(85vw, 500px) !important;
+  max-height: calc(100dvh - 140px) !important;
+  width: auto !important;
+  height: auto !important;
   object-fit: contain;
   margin: auto;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
 
 /* Fixed Upper-Right Social Links */
