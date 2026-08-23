@@ -29,32 +29,27 @@ body {
 }
 
 /* Social media icons */
+/* Social media icons */
 .social-links {
   position: fixed;
-
-  left: 0;
-  right: 0;
-  bottom: 20px;
-
-  width: 100%;
+  top: 24px;
+  right: 24px;
 
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  gap: 24px;
+  gap: 20px;
 
   z-index: 10;
 }
 
 .social-links a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   color: #fff;
   text-decoration: none;
-
   font-size: 22px;
-
   opacity: 0.75;
 
   transition: opacity 0.2s ease, transform 0.2s ease;
