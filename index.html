@@ -15,14 +15,17 @@
   />
 
   <style>
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       min-height: 100vh;
@@ -33,7 +36,7 @@
       overflow: hidden;
     }
 
-    /* Full-screen wrapper layout */
+    /* Layout Wrapper */
     .page-wrapper {
       width: 100%;
       height: 100%;
@@ -42,13 +45,17 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: max(20px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+      position: relative;
+      padding: max(20px, env(safe-area-inset-top)) 
+               max(24px, env(safe-area-inset-right)) 
+               max(20px, env(safe-area-inset-bottom)) 
+               max(24px, env(safe-area-inset-left));
     }
 
-    /* Top Navigation Bar: Badge Left, Icons Right */
+    /* Header Bar */
     .header-bar {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -95,25 +102,51 @@
       transform: translateY(-2px);
     }
 
-    /* Main Center Area: Book Cover */
+    /* Main Area & Ambient Backlight */
     .main-content {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
-      padding: 12px 0;
+      min-height: 0;
+      padding: 16px 0;
+      position: relative;
     }
 
+    .main-content::before {
+      content: "";
+      position: absolute;
+      width: min(70vw, 420px);
+      height: min(70vh, 550px);
+      background: radial-gradient(
+        circle, 
+        rgba(255, 255, 255, 0.18) 0%, 
+        rgba(160, 160, 255, 0.1) 40%, 
+        rgba(0, 0, 0, 0) 75%
+      );
+      filter: blur(50px);
+      -webkit-filter: blur(50px);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      animation: glowPulse 6s ease-in-out infinite alternate, fadeIn 1.2s ease-out 0.4s forwards;
+    }
+
+    /* Centered Book Cover */
     .hero {
       display: block;
+      position: relative;
+      z-index: 2;
       width: auto;
-      height: auto;
-      max-width: min(84vw, 480px);
-      max-height: calc(100dvh - 140px);
+      height: calc(100dvh - 120px);
+      max-height: calc(100dvh - 120px);
+      max-width: 90vw;
       object-fit: contain;
       border-radius: 4px;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), 0 0 1px rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.95), 
+                  0 0 1px rgba(255, 255, 255, 0.2);
       opacity: 0;
       animation: fadeInScale 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
@@ -122,7 +155,7 @@
     @keyframes fadeInScale {
       0% {
         opacity: 0;
-        transform: scale(0.95);
+        transform: scale(0.96);
       }
       100% {
         opacity: 1;
@@ -135,7 +168,18 @@
       100% { opacity: 1; }
     }
 
-    /* Mobile screens adjustments */
+    @keyframes glowPulse {
+      0% {
+        transform: scale(0.92);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.08);
+        opacity: 0.9;
+      }
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 600px) {
       .header-bar {
         padding: 0 4px;
@@ -155,22 +199,32 @@
         font-size: 18px;
       }
 
+      .main-content::before {
+        width: 70vw;
+        height: 50vh;
+        filter: blur(35px);
+        -webkit-filter: blur(35px);
+      }
+
       .hero {
-        max-width: 82vw;
-        max-height: calc(100dvh - 120px);
+        width: auto;
+        height: auto;
+        max-width: 86vw;
+        max-height: calc(100dvh - 130px);
       }
     }
 
-    /* Very small phones (e.g. iPhone SE) */
     @media (max-width: 360px) {
       .coming-soon {
         font-size: 8px;
         padding: 4px 10px;
         letter-spacing: 1px;
       }
+
       .social-links {
         gap: 12px;
       }
+
       .social-links a {
         font-size: 16px;
       }
@@ -197,7 +251,7 @@
       </nav>
     </header>
 
-    <!-- Book Hero -->
+    <!-- Center Hero -->
     <main class="main-content">
       <img
         src="assets/cover.jpg"
